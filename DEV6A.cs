@@ -35,8 +35,7 @@ namespace Development_HRO {
                         break;
 
                     case "c":
-                        System.Console.WriteLine ("Binary search found the input number at position " + algorithms.BinarySearch (numberList));
-                        System.Console.WriteLine ("\n");
+                        PrintIntegerArray(algorithms.InsertionSort(numberList));
                         break;
 
                     case "z":
@@ -64,10 +63,13 @@ namespace Development_HRO {
         }
 
         static void PrintIntegerArray (int[] array) {
+            Console.ForegroundColor = ConsoleColor.Green;
+            System.Console.WriteLine("Sorting algorithm outcome: ");
             foreach (int i in array) {
                 Console.Write (i.ToString () + "  ");
             }
             System.Console.WriteLine ("\n");
+            Console.ResetColor();
         }
 
     }
@@ -102,5 +104,22 @@ namespace Development_HRO {
             }
             return -1;
         }
+    
+        public int[] InsertionSort(int[] array){
+            for (int i = 0; i < array.Length; i++)
+            {
+                var key = array[i];
+                var j = i - 1;
+
+                while (j>= 0 && array[j] > key)
+                {
+                    array[j+1] = array[j]; // adding the number to the next place in the list
+                    j = j - 1; // going to the next element
+                }
+                array[j + 1] = key;
+            }
+            return array;
+        }
+    
     }
 }
