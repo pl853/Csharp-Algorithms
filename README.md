@@ -1,2 +1,6 @@
 # Development-HRO
-All development Exercises created with dotnet core
+Development lecture material overview.
+At the moment this contains:
+- Dev6A algortihms
+    - Sequentialsearch
+    - Binarysearch
