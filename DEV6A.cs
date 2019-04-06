@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Development_HRO {
     public class DEV6A {
@@ -6,38 +7,67 @@ namespace Development_HRO {
             Algorithms algorithms = new Algorithms ();
             Program program = new Program ();
             bool exit = false;
+            int[] numberList = CreateNumberList (9);
 
             while (!exit) {
                 Console.WriteLine ("You selected the course DEV6A, This course is about algorithms");
                 Console.WriteLine ("Please choose your algorithm");
                 Console.WriteLine ("SequentialSearch (a)");
                 Console.WriteLine ("BinarySearch (b)");
+                Console.WriteLine ("InsertionSort (c)");
                 Console.WriteLine ("Go Back (z)");
-
-                int[] numberListSearch = { 1, 4, 7, 9, 10, 80 };
-                int[] numberListOrder = { 8, 6, 2, 9, 4, 2, 9, 1, 15, 7 };
 
                 string menu = Console.ReadLine ();
 
                 switch (menu) {
                     case "a":
-                        System.Console.WriteLine ("Sequential search found the input number " + algorithms.SequentialSearch(numberListSearch));
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        System.Console.WriteLine ("Sequential search found the input number " + algorithms.SequentialSearch (numberList));
+                        Console.ResetColor ();
                         System.Console.WriteLine ("\n");
                         break;
 
                     case "b":
-                        System.Console.WriteLine ("Binary search found the input number at position " + algorithms.BinarySearch(numberListSearch));
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        System.Console.WriteLine ("Binary search found the input number at position " + algorithms.BinarySearch (numberList));
+                        Console.ResetColor ();
                         System.Console.WriteLine ("\n");
                         break;
+
+                    case "c":
+                        System.Console.WriteLine ("Binary search found the input number at position " + algorithms.BinarySearch (numberList));
+                        System.Console.WriteLine ("\n");
+                        break;
+
                     case "z":
-                        System.Console.WriteLine ("Bye!");
+                        System.Console.WriteLine ("Main menu");
                         exit = true;
                         break;
+
                     default:
                         Console.WriteLine ("That is no option, Please try again");
                         break;
                 }
             }
+        }
+
+        static int[] CreateNumberList (int listSize) {
+            int Min = 0;
+            int Max = 20;
+            int[] list = new int[listSize];
+
+            Random randNum = new Random ();
+            for (int i = 0; i < list.Length; i++) {
+                list[i] = randNum.Next (Min, Max);
+            }
+            return list;
+        }
+
+        static void PrintIntegerArray (int[] array) {
+            foreach (int i in array) {
+                Console.Write (i.ToString () + "  ");
+            }
+            System.Console.WriteLine ("\n");
         }
 
     }
