@@ -15,6 +15,8 @@ namespace Development_HRO {
                 Console.WriteLine ("SequentialSearch (a)");
                 Console.WriteLine ("BinarySearch (b)");
                 Console.WriteLine ("InsertionSort (c)");
+                Console.WriteLine ("BubbleSort (d)");
+                Console.WriteLine ("MergeSort (e)");
                 Console.WriteLine ("Go Back (z)");
 
                 string menu = Console.ReadLine ();
@@ -35,7 +37,15 @@ namespace Development_HRO {
                         break;
 
                     case "c":
-                        PrintIntegerArray(algorithms.InsertionSort(numberList));
+                        PrintIntegerArray (algorithms.InsertionSort (numberList));
+                        break;
+
+                    case "d":
+                        PrintIntegerArray (algorithms.BubbleSort (numberList));
+                        break;
+
+                    case "e":
+                        PrintIntegerArray (algorithms.InsertionSort (numberList));
                         break;
 
                     case "z":
@@ -64,12 +74,12 @@ namespace Development_HRO {
 
         static void PrintIntegerArray (int[] array) {
             Console.ForegroundColor = ConsoleColor.Green;
-            System.Console.WriteLine("Sorting algorithm outcome: ");
+            System.Console.WriteLine ("Sorting algorithm outcome: ");
             foreach (int i in array) {
                 Console.Write (i.ToString () + "  ");
             }
             System.Console.WriteLine ("\n");
-            Console.ResetColor();
+            Console.ResetColor ();
         }
 
     }
@@ -104,22 +114,36 @@ namespace Development_HRO {
             }
             return -1;
         }
-    
-        public int[] InsertionSort(int[] array){
-            for (int i = 0; i < array.Length; i++)
-            {
+
+        public int[] InsertionSort (int[] array) {
+            for (int i = 0; i < array.Length; i++) {
                 var key = array[i];
                 var j = i - 1;
 
-                while (j>= 0 && array[j] > key)
-                {
-                    array[j+1] = array[j]; // adding the number to the next place in the list
+                while (j >= 0 && array[j] > key) {
+                    array[j + 1] = array[j]; // adding the number to the next place in the list
                     j = j - 1; // going to the next element
                 }
                 array[j + 1] = key;
             }
             return array;
         }
-    
+
+        public int[] BubbleSort (int[] array) {
+            int temp;
+            int numLength = array.Length;
+
+            for (int i = 1;
+                (i <= (numLength - 1)); i++) {
+                for (int j = 0; j < (numLength - 1); j++) {
+                    if (array[j + 1] > array[j]) {
+                        temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+            return array;
+        }
     }
 }
