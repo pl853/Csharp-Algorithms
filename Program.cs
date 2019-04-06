@@ -42,8 +42,5 @@ namespace Development_HRO {
             }
         }
 
-        public void Restart () {
-            StartApp();
-        }
     }
 }
