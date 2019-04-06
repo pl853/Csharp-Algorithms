@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Development_HRO {
     public class Program {
         static void Main (string[] args) {
@@ -24,18 +23,22 @@ namespace Development_HRO {
 
                 switch (menu) {
                     case "a":
+                        Console.Clear ();
                         d6a.init ();
                         break;
 
                     case "b":
+                        Console.Clear ();
                         d6b.init ();
                         break;
 
                     case "e":
+                        Console.Clear ();
                         System.Console.WriteLine ("Bye!");
                         exit = true;
                         break;
                     default:
+                        Console.Clear ();
                         Console.WriteLine ("That is no option, Please try again");
                         break;
                 }

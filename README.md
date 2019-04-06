@@ -6,3 +6,7 @@ At the moment this contains:
     - Binarysearch (finding position of desired number)
     - Insertionsort (sort list low to high)
     - Bubblesort (sort list high to low)
+- Dev6B MapReduce and Neo4J
+    - Map Queries
+    - Reduce Queries
+    - Join Queries

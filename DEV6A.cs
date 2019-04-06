@@ -5,10 +5,9 @@ namespace Development_HRO {
     public class DEV6A {
         public void init () {
             Algorithms algorithms = new Algorithms ();
-            Program program = new Program ();
-            bool exit = false;
             int[] numberList = CreateNumberList (9);
 
+            bool exit = false;
             while (!exit) {
                 Console.WriteLine ("You selected the course DEV6A, This course is about algorithms");
                 Console.WriteLine ("Please choose your algorithm");
@@ -23,6 +22,7 @@ namespace Development_HRO {
 
                 switch (menu) {
                     case "a":
+                        Console.Clear ();
                         Console.ForegroundColor = ConsoleColor.Green;
                         System.Console.WriteLine ("Sequential search found the input number " + algorithms.SequentialSearch (numberList));
                         Console.ResetColor ();
@@ -30,6 +30,7 @@ namespace Development_HRO {
                         break;
 
                     case "b":
+                        Console.Clear ();
                         Console.ForegroundColor = ConsoleColor.Green;
                         System.Console.WriteLine ("Binary search found the input number at position " + algorithms.BinarySearch (numberList));
                         Console.ResetColor ();
@@ -49,11 +50,13 @@ namespace Development_HRO {
                         break;
 
                     case "z":
+                        Console.Clear ();
                         System.Console.WriteLine ("Main menu");
                         exit = true;
                         break;
 
                     default:
+                        Console.Clear ();
                         Console.WriteLine ("That is no option, Please try again");
                         break;
                 }
@@ -73,6 +76,7 @@ namespace Development_HRO {
         }
 
         static void PrintIntegerArray (int[] array) {
+            Console.Clear ();
             Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine ("Sorting algorithm outcome: ");
             foreach (int i in array) {
