@@ -9,3 +9,5 @@
 /home/sysuser/Documents/Projects/Development-HRO/obj/Debug/netcoreapp2.2/Development-HRO.AssemblyInfo.cs
 /home/sysuser/Documents/Projects/Development-HRO/obj/Debug/netcoreapp2.2/Development-HRO.dll
 /home/sysuser/Documents/Projects/Development-HRO/obj/Debug/netcoreapp2.2/Development-HRO.pdb
+/home/sysuser/Documents/Projects/Development-HRO/bin/Debug/netcoreapp2.2/Tester.dll
+/home/sysuser/Documents/Projects/Development-HRO/obj/Debug/netcoreapp2.2/Development-HRO.csproj.CopyComplete

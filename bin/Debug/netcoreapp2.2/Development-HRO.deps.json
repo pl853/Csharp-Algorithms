@@ -7,8 +7,19 @@
   "targets": {
     ".NETCoreApp,Version=v2.2": {
       "Development-HRO/1.0.0": {
+        "dependencies": {
+          "Tester": "1.0.0.0"
+        },
         "runtime": {
           "Development-HRO.dll": {}
+        }
+      },
+      "Tester/1.0.0.0": {
+        "runtime": {
+          "Tester.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -16,6 +27,11 @@
   "libraries": {
     "Development-HRO/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Tester/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
