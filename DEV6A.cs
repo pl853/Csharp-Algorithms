@@ -9,15 +9,11 @@ namespace Development_HRO {
         public void init () {
             Algorithms algorithms = new Algorithms ();
             PracAlgorithms pracAlgorithms = new PracAlgorithms ();
+
+            //GENERATE NUMBERS
             int[] numberList = CreateNumberList (9);
 
-            TreeNode<int> root = new TreeNode<int> (3, null, null, null);
-            root.leftChild = new TreeNode<int> (8, root, null, null);
-            root.rightChild = new TreeNode<int> (5, root, null, null);
-
-            root.leftChild.leftChild = new TreeNode<int> (6, root.leftChild, null, null);
-
-            System.Console.WriteLine (root.leftChild.leftChild.parent.value);
+            //CLI MENU 
             bool exit = false;
             while (!exit) {
                 Console.WriteLine ("You selected the course DEV6A, This course is about algorithms");
@@ -96,7 +92,6 @@ namespace Development_HRO {
             System.Console.WriteLine ("\n");
             Console.ResetColor ();
         }
-
     }
 
     public class Algorithms {
@@ -216,6 +211,18 @@ namespace Development_HRO {
 
             }
             curr.Next = null;
+        }
+
+        static void DoublyLinkedListInsertAfter (DoublyLinkedList<int> list, DoubleNode<int> node, int value) {
+            DoubleNode<int> newNode = new DoubleNode<int> (value, node, node.Next);
+            node.Next = newNode;
+
+            if (list.Last == node) {
+                node.Next = new DoubleNode<int>(value,node,null);
+            } else {
+                node.Next = newNode;
+                newNode.Prev.Next = newNode;
+            }
         }
 
         //HASHTABLE ALGORITHMS
@@ -365,17 +372,131 @@ namespace Development_HRO {
                 }
             }
         }
-
+        //NEEDS TO BE DONE
         public void Stack () {
 
         }
 
-        public void Queue () {
-
+        public void Enqueue (Queue<int> queue, int element) {
+            // if (queue.IsEmpty) {
+            //     queue.data[0] = element;
+            //     queue.front = queue.back = 0;
+            //     queue.Count++;
+            // } else if ((queue.back + 1) % queue.data.Length == queue.front) {
+            //     throw new QueueException ("The queue is full");
+            // } else {
+            //     queue.back = (queue.back + 1) % queue.data.Length;
+            //     queue.data[queue.back] = element;
+            //     queue.front = queue.front % queue.data.Length;
+            //     queue.Count++;
+            // }
         }
 
         //ADVANCED ALGORITHMS
-        
+        static Tuple<double[, ], int[, ]> FloydWarshall (double[, ] adjacencyMatrix) {
+            var numVertices = adjacencyMatrix.GetLength (0);
+            double[, ] dist = new double[numVertices, numVertices];
+            int[, ] next = new int[numVertices, numVertices];
+
+            for (int i = 0; i < numVertices; i++)
+                for (int j = 0; j < numVertices; j++) {
+                    if (i == j) {
+                        dist[i, j] = 0;
+                    } else {
+                        dist[i, j] = adjacencyMatrix[i, j];
+                    }
+
+                    if (adjacencyMatrix[i, j] != Double.PositiveInfinity) {
+                        next[i, j] = i;
+                    } else {
+                        next[i, j] = -1;
+                    }
+                }
+
+            for (int k = 0; k < numVertices; k++)
+                for (int i = 0; i < numVertices; i++)
+                    for (int j = 0; j < numVertices; j++) {
+                        if (dist[i, k] + dist[k, j] < dist[i, j]) {
+                            dist[i, j] = dist[i, k] + dist[k, j];
+                            next[i, j] = next[i, k];
+                        }
+
+                    }
+
+            return new Tuple<double[, ], int[, ]> (dist, next);
+        }
+
+        static Tuple<double[], int[]> Dijkstra (double[, ] adjacencyMatrix, int source) {
+            int Count = adjacencyMatrix.GetLength (0);
+            double[] distance = new double[Count];
+            int[] prev = new int[Count];
+            List<int> vertexSet = new List<int> (Count);
+
+            for (int i = 0; i < Count; i++) {
+
+                distance[i] = double.PositiveInfinity;
+
+                prev[i] = -1;
+
+                vertexSet.Add (source);
+            }
+
+            distance[source] = 0;
+            while (vertexSet.Count > 0) {
+                int firstUnvisited = vertexSet.First ();
+                double min = distance[firstUnvisited];
+                int minIndex = firstUnvisited;
+                foreach (var v in vertexSet) {
+                    if (distance[v] < min) {
+
+                        min = distance[v];
+                    }
+                }
+
+                vertexSet.Remove (minIndex);
+                List<int> neighbors = new List<int> ();
+                for (int i = 0; i < Count; i++) {
+                    if (adjacencyMatrix[minIndex, i] < Double.PositiveInfinity)
+                        neighbors.Add (i);
+                }
+
+                foreach (var n in neighbors) {
+                    double alternativeDist = distance[minIndex] + adjacencyMatrix[minIndex, n];
+                    if (alternativeDist < distance[n]) {
+                        distance[n] = alternativeDist;
+                        prev[n] = minIndex;
+
+                    }
+                }
+            }
+
+            return new Tuple<double[], int[]> (distance, prev);
+
+        }
+
+        static string BFS (Graph graph, int root) {
+            string s = "";
+            bool[] visited = new bool[graph.Count];
+            visited[root] = true;
+
+            Queue<int> nodeQueue = new Queue<int> ();
+
+            nodeQueue.Enqueue (root);
+
+            while (nodeQueue.Count > 0) {
+                int current = nodeQueue.Dequeue ();
+                List<int> neighbors = graph.Neighbors (current);
+                s += current + " ";
+                for (int i = 0; i < neighbors.Count; i++) {
+                    if (!visited[neighbors[i]]) {
+                        visited[neighbors[i]] = true;
+                        nodeQueue.Enqueue (neighbors[i]);
+                    }
+                }
+            }
+            return s;
+        }
+
     }
 
     public class PracAlgorithms {
@@ -462,28 +583,6 @@ namespace Development_HRO {
             return null; // TODO: Ex 4.1 PLACEHOLDER: REPLACE null WITH YOUR CODE
         }
 
-        static string BFS (Graph graph, int root) {
-            string s = "";
-            bool[] visited = new bool[graph.Count];
-            visited[root] = true;
-
-            Queue<int> nodeQueue = new Queue<int> ();
-            //TODO: EX 5.1
-
-            while (nodeQueue.Count > 0) {
-                int current = 0; //TODO: EX 5.2 PLACEHOLDER, REPLACE 0 WITH YOUR CODE
-                List<int> neighbors = graph.Neighbors (current);
-                s += current + " ";
-                for (int i = 0; i < neighbors.Count; i++) {
-                    if (!visited[neighbors[i]]) {
-                        //TODO: EX 5.3
-
-                    }
-                }
-            }
-            return s;
-        }
-
         static void DoublyLinkedListInsertAfter (DoublyLinkedList<int> list, DoubleNode<int> node, int value) {
             DoubleNode<int> newNode = new DoubleNode<int> (value, node, node.Next);
             node.Next = newNode;
@@ -533,48 +632,6 @@ namespace Development_HRO {
                     }
                 }
             }
-        }
-
-        static Tuple<double[], int[]> Dijkstra (double[, ] adjacencyMatrix, int source) {
-            int Count = adjacencyMatrix.GetLength (0);
-            double[] distance = new double[Count];
-            int[] prev = new int[Count];
-            List<int> vertexSet = new List<int> (Count);
-
-            for (int i = 0; i < Count; i++) {
-                // TODO: Ex 5.1; distance[i] = ?
-                // TODO: Ex 5.2; prev[i] = ?;
-                // TODO: Ex 5.3; vertexSet.Add(?);
-            }
-
-            distance[source] = 0;
-            while (vertexSet.Count > 0) {
-                int firstUnvisited = vertexSet.First ();
-                double min = distance[firstUnvisited];
-                int minIndex = firstUnvisited;
-                foreach (var v in vertexSet) {
-                    if (distance[v] < min) {
-                        // TODO: Ex 5.4 
-                    }
-                }
-
-                vertexSet.Remove (minIndex);
-                List<int> neighbors = new List<int> ();
-                for (int i = 0; i < Count; i++) {
-                    if (adjacencyMatrix[minIndex, i] < Double.PositiveInfinity)
-                        neighbors.Add (i);
-                }
-
-                foreach (var n in neighbors) {
-                    double alternativeDist = distance[minIndex] + adjacencyMatrix[minIndex, n];
-                    if (alternativeDist < distance[n]) {
-                        // TODO: Ex 5.5 
-                    }
-                }
-            }
-
-            return new Tuple<double[], int[]> (distance, prev);
-
         }
 
         static Node<int> SortedListFind (SortedLinkedList<int> list, int value) {
@@ -658,9 +715,8 @@ namespace Development_HRO {
             }
         }
 
-        static Tuple<double[, ], int[, ]> FloydWarshall (double[, ] graph) {
-            var adjacencyMatrix = graph;
-            var numVertices = graph.GetLength (0);
+        static Tuple<double[, ], int[, ]> FloydWarshall (double[, ] adjacencyMatrix) {
+            var numVertices = adjacencyMatrix.GetLength (0);
             double[, ] dist = new double[numVertices, numVertices];
             int[, ] next = new int[numVertices, numVertices];
 
@@ -688,6 +744,84 @@ namespace Development_HRO {
                     }
 
             return new Tuple<double[, ], int[, ]> (dist, next);
+        }
+
+        static Tuple<double[], int[]> Dijkstra (double[, ] adjacencyMatrix, int source) {
+            int Count = adjacencyMatrix.GetLength (0);
+            double[] distance = new double[Count];
+            int[] prev = new int[Count];
+            List<int> vertexSet = new List<int> (Count);
+
+            for (int i = 0; i < Count; i++) {
+                // TODO: Ex 5.1; distance[i] = ?
+                // TODO: Ex 5.2; prev[i] = ?;
+                // TODO: Ex 5.3; vertexSet.Add(?);
+            }
+
+            distance[source] = 0;
+            while (vertexSet.Count > 0) {
+                int firstUnvisited = vertexSet.First ();
+                double min = distance[firstUnvisited];
+                int minIndex = firstUnvisited;
+                foreach (var v in vertexSet) {
+                    if (distance[v] < min) {
+                        // TODO: Ex 5.4 
+                    }
+                }
+
+                vertexSet.Remove (minIndex);
+                List<int> neighbors = new List<int> ();
+                for (int i = 0; i < Count; i++) {
+                    if (adjacencyMatrix[minIndex, i] < Double.PositiveInfinity)
+                        neighbors.Add (i);
+                }
+
+                foreach (var n in neighbors) {
+                    double alternativeDist = distance[minIndex] + adjacencyMatrix[minIndex, n];
+                    if (alternativeDist < distance[n]) {
+                        // TODO: Ex 5.5 
+                    }
+                }
+            }
+
+            return new Tuple<double[], int[]> (distance, prev);
+
+        }
+
+        static string BFS (Graph graph, int root) {
+            string s = "";
+            bool[] visited = new bool[graph.Count];
+            visited[root] = true;
+
+            Queue<int> nodeQueue = new Queue<int> ();
+            //TODO: EX 5.1
+            nodeQueue.Enqueue (root);
+
+            while (nodeQueue.Count > 0) {
+                int current = nodeQueue.Dequeue (); //TODO: EX 5.2 PLACEHOLDER, REPLACE 0 WITH YOUR CODE
+                List<int> neighbors = graph.Neighbors (current);
+                s += current + " ";
+                for (int i = 0; i < neighbors.Count; i++) {
+                    if (!visited[neighbors[i]]) {
+                        //TODO: EX 5.3
+                    }
+                }
+            }
+            return s;
+        }
+
+        static void Enqueue (Queue<int> queue, int element) {
+            // if (queue.IsEmpty) {
+            //     queue.data[0] = element;
+            //     queue.front = queue.back = 0;
+            //     queue.Count++;
+            // } else if ((queue.back + 1) % queue.data.Length == queue.front) {
+            //     throw new QueueException ("The queue is full");
+            // } else {
+            //     queue.back = 0 //TODO: Ex 2.1 PLACEHOLDER: REPLACE 0 WITH YOUR CODE
+            //     queue.data[queue.back] = element;
+            //     //TODO Ex 2.2
+            // }
         }
     }
 
