@@ -52,6 +52,7 @@ namespace Development_HRO.Libraries {
 
     public static class Sorting<T> where T : IComparable
     {
-        public static T[] Merge(T[] arr, int left, int middle, int right){return null;}
+        public static T[] Merge(T[] arr, int left, int middle, int right){return null;
+        }
     }
 }
