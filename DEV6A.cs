@@ -204,9 +204,18 @@ namespace Development_HRO {
             curr.Next = new Node<int> (value, curr.Next);
         }
 
-        //HAS TO BE DONE
         public void SortedListDelete (SortedLinkedList<int> list, int value) {
+            if (list.start == null || list.start.Value.CompareTo (value) >= 0) {
+                list.start = null;
+                return;
+            }
 
+            Node<int> curr = list.start;
+            while (curr.Next != null && curr.Next.Value.CompareTo (value) < 0) {
+                curr = curr.Next;
+
+            }
+            curr.Next = null;
         }
 
         //HASHTABLE ALGORITHMS
@@ -334,9 +343,27 @@ namespace Development_HRO {
             }
         }
 
-        //HAS TO BE DONE
-        public void BSTDelete () {
+        public void BSTDelete (BSTree<int> tree, int value) {
+            if (tree.root == null) {
+                return;
+            } else
+                BSTDeleteStartingFrom (tree.root, value);
+        }
 
+        static void BSTDeleteStartingFrom (TreeNode<int> node, int value) {
+            if (node.value.CompareTo (value) < 0) {
+                if (node.rightChild == null) {
+                    return;
+                } else {
+                    node.rightChild = null;
+                }
+            } else if (node.value.CompareTo (value) > 0) {
+                if (node.leftChild == null) {
+                    return;
+                } else {
+                    node.leftChild = null;
+                }
+            }
         }
 
         public void Stack () {
@@ -346,6 +373,9 @@ namespace Development_HRO {
         public void Queue () {
 
         }
+
+        //ADVANCED ALGORITHMS
+        
     }
 
     public class PracAlgorithms {
