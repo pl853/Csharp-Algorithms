@@ -122,7 +122,6 @@ namespace Development_HRO {
             return -1;
         }
 
-
         //SORTING ALGORITHMS
         public int[] InsertionSort (int[] array) {
             for (int i = 0; i < array.Length; i++) {
@@ -182,27 +181,22 @@ namespace Development_HRO {
 
         public void SortedListAdd (SortedLinkedList<int> list, int value) {
             if (list.start == null || list.start.Value.CompareTo (value) >= 0) {
-                // TODO: EX 1.1 list.start = ?
                 list.start = new Node<int> (value, list.start);
                 return;
             }
 
             Node<int> curr = list.start;
             while (curr.Next != null && curr.Next.Value.CompareTo (value) < 0) {
-
-                // TODO: EX 1.2 PLACEHOLDER, REPLACE break WITH YOUR CODE 
                 curr = curr.Next;
 
             }
             curr.Next = new Node<int> (value, curr.Next);
-            // TODO: EX 1.3 curr.Next = ?
         }
 
         //HAS TO BE DONE
         public void SortedListDelete (SortedLinkedList<int> list, int value) {
 
         }
-
 
         //HASHTABLE ALGORITHMS
         static int getIndex (string key, int size) {
@@ -220,8 +214,7 @@ namespace Development_HRO {
                 if (values[index].Key.Equals (key)) {
                     return values[index].Value;
                 } else {
-                    // TODO: Ex2.1; potentialIndex = ?
-                    var potentialIndex = index; // PLACEHOLDER: REMOVE AND REPLACE WITH YOUR CODE
+                    var potentialIndex = index;
 
                     while (values[potentialIndex] != null) {
                         if (values[potentialIndex].Key.Equals (key)) {
@@ -243,13 +236,12 @@ namespace Development_HRO {
             int index = getIndex (key, arraySize);
             var values = table.buckets;
             if (values[index] == null)
-                values[index] = new Entry<string, int> (key, value); //TODO: Ex 2.2 PLACEHOLDER: REPLACE null WITH YOUR CODE
+                values[index] = new Entry<string, int> (key, value);
             else {
                 if (values[index].Key.Equals (key)) {
                     throw new ArgumentException ("Key already exists");
                 } else {
-                    // TODO: Ex2.3; potentialIndex = ?
-                    var potentialIndex = index; // PLACEHOLDER: REMOVE AND REPLACE WITH YOUR CODE
+                    var potentialIndex = index;
 
                     while (values[potentialIndex] != null) {
                         potentialIndex++;
@@ -258,7 +250,7 @@ namespace Development_HRO {
                         if (potentialIndex == index)
                             return;
                     }
-                    values[potentialIndex] = new Entry<string, int> (key, value); //TODO: Ex 2.4 PLACEHOLDER: REPLACE null WITH YOUR CODE
+                    values[potentialIndex] = new Entry<string, int> (key, value);
                 }
             }
         }
@@ -271,13 +263,11 @@ namespace Development_HRO {
                 return;
             else {
                 if (values[index].Key.Equals (key)) {
-                    //TODO: EX 3.1 values[index] = ?;
                     values[index] = null;
                 } else {
-                    var potentialIndex = getIndex (key, arraySize); //TODO: EX 3.2 PLACEHOLDER, REPLACE 0 WITH YOUR CODE
+                    var potentialIndex = getIndex (key, arraySize);
                     while (values[potentialIndex] != null) {
                         if (values[potentialIndex].Key.Equals (key)) {
-                            //TODO: EX 3.3 values[potentialIndex] = ?;
                             values[potentialIndex] = null;
                             return;
                         }
@@ -292,10 +282,9 @@ namespace Development_HRO {
             }
         }
 
-
         //BINARY SEARCH TREE ALGORITHMS
         static TreeNode<int> BSTFind (BSTree<int> tree, int value) {
-            return searchStartingFrom (tree.root, value); // TODO: Ex 4.1 PLACEHOLDER: REPLACE null WITH YOUR CODE
+            return searchStartingFrom (tree.root, value);
         }
 
         private static TreeNode<int> searchStartingFrom (TreeNode<int> node, int value) {
@@ -303,38 +292,32 @@ namespace Development_HRO {
                 throw new Exception ("value not found");
 
             if (node.value.CompareTo (value) == 0)
-                return node; // TODO: Ex 4.2 PLACEHOLDER: REPLACE null WITH YOUR CODE
+                return node;
 
             if (node.value.CompareTo (value) < 0)
-                return searchStartingFrom (node.rightChild, value); // TODO: Ex 4.3 PLACEHOLDER: REPLACE null WITH YOUR CODE
+                return searchStartingFrom (node.rightChild, value);
 
-            return searchStartingFrom (node.leftChild, value); // TODO: Ex 4.4 PLACEHOLDER: REPLACE null WITH YOUR CODE
+            return searchStartingFrom (node.leftChild, value);
         }
         static void BSTAdd (BSTree<int> tree, int value) {
             if (tree.root == null) {
-                // TODO: EX4.1; tree.root = ?
                 tree.root = new TreeNode<int> (value, tree.root, null, null);
                 return;
             } else
-                // TODO: Ex4.2
-                BSTInsertStartingFrom (tree.root, value); // PLACEHOLDER; REMOVE AND REPLACE WITH YOUR CODE
+                BSTInsertStartingFrom (tree.root, value);
         }
 
         static void BSTInsertStartingFrom (TreeNode<int> node, int value) {
             if (node.value.CompareTo (value) < 0) {
                 if (node.rightChild == null) {
-                    // TODO: Ex4.3; node.rightChild = ?
                     node.rightChild = new TreeNode<int> (value, node, null, null);
                 } else {
-                    // TODO: Ex4.4
                     BSTInsertStartingFrom (node.rightChild, value);
                 }
             } else if (node.value.CompareTo (value) > 0) {
                 if (node.leftChild == null) {
-                    // TODO: Ex4.5; node.leftChild = ?
                     node.leftChild = new TreeNode<int> (value, node, null, null);
                 } else {
-                    // TODO: Ex4.6
                     BSTInsertStartingFrom (node.leftChild, value);
                 }
             }
@@ -345,12 +328,12 @@ namespace Development_HRO {
 
         }
 
-        public void Stack(){
+        public void Stack () {
 
         }
 
-        public void Queue(){
-            
+        public void Queue () {
+
         }
     }
 
