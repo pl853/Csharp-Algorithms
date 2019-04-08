@@ -1,8 +1,9 @@
 ﻿﻿using System;
 using System.Collections.Generic;
-using Tester;
+using Development_HRO.Libraries;
 
 namespace Development_HRO {
+
     public class DEV6A {
         public void init () {
             Algorithms algorithms = new Algorithms ();
@@ -153,6 +154,7 @@ namespace Development_HRO {
             }
             return array;
         }
+
         public int[] MergeSort (int[] arr, int leftBoundary, int rightBoundary) {
             if (leftBoundary < rightBoundary) {
                 int middle = (leftBoundary + rightBoundary) / 2;
@@ -204,7 +206,7 @@ namespace Development_HRO {
             int index = hashCode % size;
             return index;
         }
-        static Nullable<int> HashTableFind (HashTable<string, int> table, string key) {
+        public Nullable<int> HashTableFind (HashTable<string, int> table, string key) {
             var arraySize = table.buckets.Length;
             int index = getIndex (key, arraySize);
             var values = table.buckets;
@@ -231,7 +233,7 @@ namespace Development_HRO {
             }
             return null;
         }
-        static void HashTableAdd (HashTable<string, int> table, string key, int value) {
+        public void HashTableAdd (HashTable<string, int> table, string key, int value) {
             var arraySize = table.buckets.Length;
             int index = getIndex (key, arraySize);
             var values = table.buckets;
@@ -255,7 +257,7 @@ namespace Development_HRO {
             }
         }
 
-        static void HashTableDelete (HashTable<string, int> table, string key) {
+        public void HashTableDelete (HashTable<string, int> table, string key) {
             var arraySize = table.buckets.Length;
             int index = getIndex (key, arraySize);
             var values = table.buckets;

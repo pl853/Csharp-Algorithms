@@ -5,10 +5,4 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>Development_HRO</RootNamespace>
   </PropertyGroup>
-<ItemGroup>
-    <Reference Include="Tester">
-      <HintPath>..\..\Libraries\Tester.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
