@@ -3,11 +3,11 @@
 /home/sysuser/Documents/Projects/Csharp-Algorithms/bin/Debug/netcoreapp2.2/Csharp-Algorithms.runtimeconfig.dev.json
 /home/sysuser/Documents/Projects/Csharp-Algorithms/bin/Debug/netcoreapp2.2/Csharp-Algorithms.dll
 /home/sysuser/Documents/Projects/Csharp-Algorithms/bin/Debug/netcoreapp2.2/Csharp-Algorithms.pdb
+/home/sysuser/Documents/Projects/Csharp-Algorithms/bin/Debug/netcoreapp2.2/Tester.dll
 /home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.csprojAssemblyReference.cache
 /home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.csproj.CoreCompileInputs.cache
 /home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.AssemblyInfoInputs.cache
 /home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.AssemblyInfo.cs
+/home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.csproj.CopyComplete
 /home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.dll
 /home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.pdb
-/home/sysuser/Documents/Projects/Csharp-Algorithms/bin/Debug/netcoreapp2.2/Tester.dll
-/home/sysuser/Documents/Projects/Csharp-Algorithms/obj/Debug/netcoreapp2.2/Csharp-Algorithms.csproj.CopyComplete

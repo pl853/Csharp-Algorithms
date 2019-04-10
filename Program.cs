@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Development_HRO {
+namespace Csharp_Algorithms {
     public class Program {
         static void Main (string[] args) {
 
@@ -9,40 +9,7 @@ namespace Development_HRO {
         static void StartApp () {
 
             DEV6A d6a = new DEV6A ();
-            DEV6B d6b = new DEV6B ();
-            bool exit = false;
-
-            while (!exit) {
-                System.Console.WriteLine ("Welcome, here you can find info related to development");
-                System.Console.WriteLine ("Please choose your course");
-                Console.WriteLine ("DEV6A (a)");
-                Console.WriteLine ("DEV6B (b)");
-                Console.WriteLine ("Exit (e)");
-
-                string menu = Console.ReadLine ();
-
-                switch (menu) {
-                    case "a":
-                        Console.Clear ();
-                        d6a.init ();
-                        break;
-
-                    case "b":
-                        Console.Clear ();
-                        d6b.init ();
-                        break;
-
-                    case "e":
-                        Console.Clear ();
-                        System.Console.WriteLine ("Bye!");
-                        exit = true;
-                        break;
-                    default:
-                        Console.Clear ();
-                        Console.WriteLine ("That is no option, Please try again");
-                        break;
-                }
-            }
+            d6a.init();
         }
 
     }

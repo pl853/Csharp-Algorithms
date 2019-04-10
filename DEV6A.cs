@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Tester;
 
-namespace Development_HRO {
+namespace Csharp_Algorithms {
 
     public class DEV6A {
         public void init () {

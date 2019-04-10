@@ -1,4 +1,4 @@
-# Development-HRO
+# Csharp-Algorithms
 Development lecture material overview.
 At the moment this contains:
 

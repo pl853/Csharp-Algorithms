@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/sysuser/Documents/Projects/Development-HRO/Development-HRO.csproj",
-      "projectName": "Development-HRO",
-      "projectPath": "/home/sysuser/Documents/Projects/Development-HRO/Development-HRO.csproj",
+      "projectUniqueName": "/home/sysuser/Documents/Projects/Csharp-Algorithms/Csharp-Algorithms.csproj",
+      "projectName": "Csharp-Algorithms",
+      "projectPath": "/home/sysuser/Documents/Projects/Csharp-Algorithms/Csharp-Algorithms.csproj",
       "packagesPath": "/home/sysuser/.nuget/packages/",
-      "outputPath": "/home/sysuser/Documents/Projects/Development-HRO/obj/",
+      "outputPath": "/home/sysuser/Documents/Projects/Csharp-Algorithms/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
