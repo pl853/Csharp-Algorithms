@@ -1,5 +1,5 @@
 # Csharp-Algorithms
-Development lecture material overview.
+Some algorithms 
 At the moment this contains:
 
 - Dev6A algortihms
@@ -23,8 +23,4 @@ At the moment this contains:
     - FloydWarshall's Algorithm
     - Dijkstra's Algorithm
     - BFS
-    
-- Dev6B MapReduce and Neo4J
-    - Map Queries
-    - Reduce Queries
-    - Join Queries
+
