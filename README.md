@@ -20,7 +20,9 @@ At the moment this contains:
     - BSTFind
     - BSTAdd
     - BSTDelete
+    - BSTTraverse
     - FloydWarshall's Algorithm
     - Dijkstra's Algorithm
-    - BFS
+    - BFS (Breath first traversal)
+    - DFS (Depth first traversal)
 
