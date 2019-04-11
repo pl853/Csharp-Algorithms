@@ -159,6 +159,37 @@ namespace Csharp_Algorithms {
             return array;
         }
 
+        static void Merge (int[] arr, int left, int middle, int right) {
+            int i, j, k;
+            int[] arr1 = new int[middle - left + 1];
+            int[] arr2 = new int[right - middle];
+            for (i = 0, k = left; i < arr1.Length; i++, k++) {
+                //TODO: EX 3.1 arr1[i] = ?;
+                arr1[i] = arr[k];
+            }
+            for (j = 0, k = middle + 1; j < arr2.Length; j++, k++) {
+                //TODO: EX 3.2 arr2[j] = ?;
+                arr2[j] = arr[k];
+            }
+            i = j = 0;
+            k = left;
+            while (i < arr1.Length && j < arr2.Length) {
+                if (arr1[i].CompareTo (arr2[j]) <= 0)
+                    arr[k++] = arr1[i++];
+                else
+                    arr[k++] = arr2[j++];
+            }
+            if (i == arr1.Length) {
+
+                i = i + 1;
+            } else {
+                //TODO: EX 3.4
+
+                j = j + 1;
+
+            }
+        }
+
         public int[] MergeSort (int[] arr, int leftBoundary, int rightBoundary) {
             if (leftBoundary < rightBoundary) {
                 int middle = (leftBoundary + rightBoundary) / 2;
@@ -218,11 +249,26 @@ namespace Csharp_Algorithms {
             node.Next = newNode;
 
             if (list.Last == node) {
-                node.Next = new DoubleNode<int>(value,node,null);
+                node.Next = new DoubleNode<int> (value, node, null);
             } else {
                 node.Next = newNode;
                 newNode.Prev.Next = newNode;
             }
+        }
+
+        static void DoublyLinkedListRemove (DoublyLinkedList<int> list, DoubleNode<int> node) {
+
+            list.Size--;
+            if (node.Prev != null) {
+                node.Prev.Next = node.Next;
+            }
+            if (node.Next != null) {
+                node.Next.Prev = node.Prev;
+            }
+            if (list.First == node)
+                list.First = node.Next;
+            if (list.Last == node)
+                list.Last = node.Prev;
         }
 
         //HASHTABLE ALGORITHMS
@@ -372,6 +418,7 @@ namespace Csharp_Algorithms {
                 }
             }
         }
+
         //NEEDS TO BE DONE
         public void Stack () {
 
@@ -473,6 +520,16 @@ namespace Csharp_Algorithms {
             return new Tuple<double[], int[]> (distance, prev);
 
         }
+        static string BSTTraversal (TreeNode<int> currNode) {
+            if (currNode == null)
+                return "";
+
+            string s = currNode.value.ToString () + " ";
+            s += BSTTraversal (currNode.leftChild);
+            s += BSTTraversal (currNode.rightChild);
+
+            return s;
+        }
 
         static string BFS (Graph graph, int root) {
             string s = "";
@@ -492,6 +549,25 @@ namespace Csharp_Algorithms {
                         visited[neighbors[i]] = true;
                         nodeQueue.Enqueue (neighbors[i]);
                     }
+                }
+            }
+            return s;
+        }
+
+        static string DFS (Graph graph, int root) {
+            string s = "";
+            bool[] visited = new bool[graph.Count];
+            Stack<int> nodeStack = new Stack<int> ();
+ 
+            nodeStack.Push (root);
+            while (nodeStack.Count > 0) {
+                int current = nodeStack.Pop ();
+                int[] unvisitedNeighbors = graph.Neighbors (current).Where (x => !visited[x]).Reverse ().ToArray ();
+                if (!visited[current])
+                    s += current + " ";
+                visited[current] = true;
+                for (int i = 0; i < unvisitedNeighbors.Length; i++) {
+                    nodeStack.Push (unvisitedNeighbors[i]);
                 }
             }
             return s;
