@@ -2,7 +2,7 @@
 Some algorithms 
 At the moment this contains:
 
-- Dev6A algortihms
+- Implented algorithms
     - Sequentialsearch 
     - Binarysearch 
     - Insertionsort 
